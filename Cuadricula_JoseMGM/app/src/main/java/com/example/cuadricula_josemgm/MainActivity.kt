@@ -97,7 +97,7 @@ fun TopicCard(topic: Topic, modifier: Modifier=Modifier) {
                             start = dimensionResource(id = R.dimen.padding_16),
                             end = dimensionResource(id = R.dimen.padding_8)))
                     Text(
-                        text = topic.quotaCourse.toString(),
+                        text = topic.availableCourses.toString(),
                         style = MaterialTheme.typography.labelMedium,
                         modifier = modifier.padding(top = dimensionResource(id = R.dimen.padding_4)))
                 }
