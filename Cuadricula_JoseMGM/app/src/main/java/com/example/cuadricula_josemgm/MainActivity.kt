@@ -24,10 +24,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.cuadricula_josemgm.data.DataSource
 import com.example.cuadricula_josemgm.model.Topic
 import com.example.cuadricula_josemgm.ui.theme.Cuadrícula_JoseMGMTheme
@@ -52,9 +52,9 @@ class MainActivity : ComponentActivity() {
 fun TopicCardGrid(){
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
-        contentPadding = PaddingValues(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+        contentPadding = PaddingValues(dimensionResource(id = R.dimen.padding_8)),
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_8)),
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_8))
     ){
         items(DataSource.topics){ topicCard->
             TopicCard(topicCard)
@@ -71,7 +71,10 @@ fun TopicCard(topic: Topic, modifier: Modifier=Modifier) {
                     painter = painterResource(topic.imageCourse),
                     contentDescription = null,
                     modifier= modifier
-                        .size(width = 68.dp, height = 68.dp)
+                        .size(
+                            width = dimensionResource(id = R.dimen.image_size_Width),
+                            height = dimensionResource(id = R.dimen.image_size_Height)
+                        )
                         .aspectRatio(1f),
                     contentScale = ContentScale.Crop)
 
@@ -81,20 +84,22 @@ fun TopicCard(topic: Topic, modifier: Modifier=Modifier) {
                     text = stringResource(topic.stringNameCourse),
                     style = MaterialTheme.typography.bodyMedium,
                     modifier = modifier.padding(
-                        start = 16.dp,
-                        top = 16.dp,
-                        end = 16.dp,
-                        bottom = 8.dp
+                        start = dimensionResource(id = R.dimen.padding_16),
+                        top = dimensionResource(id = R.dimen.padding_16),
+                        end = dimensionResource(id = R.dimen.padding_16),
+                        bottom = dimensionResource(id = R.dimen.padding_8)
                     ))
                 Row {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_grain),
                         contentDescription = null,
-                        modifier = modifier.padding(start = 16.dp, end = 8.dp))
+                        modifier = modifier.padding(
+                            start = dimensionResource(id = R.dimen.padding_16),
+                            end = dimensionResource(id = R.dimen.padding_8)))
                     Text(
                         text = topic.quotaCourse.toString(),
                         style = MaterialTheme.typography.labelMedium,
-                        modifier = modifier.padding(top = 4.dp))
+                        modifier = modifier.padding(top = dimensionResource(id = R.dimen.padding_4)))
                 }
             }
         }
