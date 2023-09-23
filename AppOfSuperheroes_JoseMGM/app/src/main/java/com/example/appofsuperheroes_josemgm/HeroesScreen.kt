@@ -45,7 +45,7 @@ import com.example.appofsuperheroes_josemgm.ui.theme.AppOfSuperheroes_JoseMGMThe
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun HeroesLista(
+fun HeroesList(
     heroes: List<Hero>,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(dimensionResource(id = R.dimen.padding_0)),
@@ -76,7 +76,7 @@ fun HeroesLista(
                                     stiffness = StiffnessVeryLow,
                                     dampingRatio = DampingRatioLowBouncy
                                 ),
-                                initialOffsetY = { it * (index + 1) } // staggered entrance
+                                initialOffsetY = { it * (index + 1) }
                             )
                         )
                 )
@@ -144,12 +144,12 @@ fun HeroPreview() {
 
 @Preview("Heroes List")
 @Composable
-fun HeroesPreview() {
+fun HeroesListPreview() {
     AppOfSuperheroes_JoseMGMTheme(darkTheme = false) {
         Surface (
             color = MaterialTheme.colorScheme.background
         ) {
-            HeroesLista(heroes = HeroesRepository.heroes)
+            HeroesList(heroes = HeroesRepository.heroes)
         }
     }
 }
