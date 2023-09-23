@@ -64,7 +64,7 @@ fun AppOfSuperheroes_JoseMGMTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = Typography2,
         content = content
     )
 }
